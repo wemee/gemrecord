@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170704034044) do
+ActiveRecord::Schema.define(version: 20170704035948) do
+
+  create_table "exercises", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "routine_exercise_ships", force: :cascade do |t|
+    t.integer "routine_id"
+    t.integer "exercise_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exercise_id"], name: "index_routine_exercise_ships_on_exercise_id"
+    t.index ["routine_id"], name: "index_routine_exercise_ships_on_routine_id"
+  end
+
+  create_table "routines", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_routines_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
