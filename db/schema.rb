@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170704035948) do
+ActiveRecord::Schema.define(version: 20170704042325) do
+
+  create_table "cets", force: :cascade do |t|
+    t.integer "exercise_id"
+    t.integer "repetition"
+    t.float "weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exercise_id"], name: "index_cets_on_exercise_id"
+  end
 
   create_table "exercises", force: :cascade do |t|
     t.string "name"

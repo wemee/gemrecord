@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Exercise:</strong>
+  <%= @cet.exercise %>
+</p>
+
+<p>
+  <strong>Repetition:</strong>
+  <%= @cet.repetition %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @cet.weight %>
+</p>
+
+<%= link_to 'Edit', edit_cet_path(@cet) %> |
+<%= link_to 'Back', cets_path %>

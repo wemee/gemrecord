@@ -1,0 +1,32 @@
+<%= form_with(model: cet, local: true) do |form| %>
+  <% if cet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cet.errors.count, "error") %> prohibited this cet from being saved:</h2>
+
+      <ul>
+      <% cet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :exercise_id %>
+    <%= form.text_field :exercise_id, id: :cet_exercise_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :repetition %>
+    <%= form.number_field :repetition, id: :cet_repetition %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight %>
+    <%= form.text_field :weight, id: :cet_weight %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
