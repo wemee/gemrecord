@@ -4,4 +4,6 @@ class Exercise < ApplicationRecord
   has_many :cets
 
   belongs_to :user
+  belongs_to :category
+
 end

@@ -7,6 +7,9 @@ class User < ApplicationRecord
 
   has_many :routines
   has_many :exercises
+  has_many :categories
+
+  after_create :set_defuat_exercises
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -26,5 +29,10 @@ class User < ApplicationRecord
         user.email = data["email"] if user.email.blank?
       end
     end
+  end
+
+  private
+  def set_defuat_exercises
+
   end
 end
