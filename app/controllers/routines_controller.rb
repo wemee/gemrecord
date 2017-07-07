@@ -14,6 +14,11 @@ class RoutinesController < ApplicationController
 
   # GET /routines/new
   def new
+    if user_signed_in?
+      @exercise_data_json = current_user.get_exercise_data_json
+    else
+      @exercise_data_json = User.first.get_exercise_data_json
+    end
     @routine = Routine.new
   end
 

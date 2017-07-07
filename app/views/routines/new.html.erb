@@ -1,10 +1,89 @@
-<h1>New Routine</h1>
+<div class="container" id="routines_new_page">
+  <h1>訓練記錄中</h1>
 
-<%= render 'form', routine: @routine %>
+  <h2>臥推</h2>
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>幾下</th>
+        <th>重量</th>
+        <th>完成</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr class="info">
+        <td>3</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr class="success">
+        <td>4</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr class="danger">
+        <td>5</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr class="warning">
+        <td>6</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr class="active">
+        <td>7</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+    </tbody>
+  </table>
 
-<%= link_to 'Back', routines_path %>
+  <div class="form-inline">
+    <select class="selectpicker" data-live-search="true">
+      <optgroup v-for="cate in exercise_data" v-bind:label="cate.name">
+        <option v-for="exercise in cate.exercises">{{ exercise.name }}</option>
+      </optgroup>
+    </select>
+    <button type="submit" class="btn btn-default">新增動作</button>
+  </div>
+
+
+</div>
 
 <% content_for :head do %>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://unpkg.com/vue"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/css/bootstrap-select.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js"></script>
 <% end %>
+
+<%= javascript_tag do %>
+  var exercise_data_json = <%= @exercise_data_json.html_safe %>
+<% end %>
+<script>
+  var app = new Vue({
+    el: '#routines_new_page',
+    data: {
+      exercise_data: exercise_data_json
+    }
+  })
+  $('.selectpicker').selectpicker();
+</script>

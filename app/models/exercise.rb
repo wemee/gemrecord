@@ -6,4 +6,5 @@ class Exercise < ApplicationRecord
   belongs_to :user
   belongs_to :category
 
+  # default_scope -> { select(:id, :name) }
 end

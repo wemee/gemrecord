@@ -31,6 +31,19 @@ class User < ApplicationRecord
     end
   end
 
+  def get_exercise_data_json
+    get_exercise_data.to_json(
+      include: {
+        exercises: {only: [:id, :name]}
+      },
+      except: [:created_at, :updated_at]
+    )
+  end
+
+  def get_exercise_data
+    cate = Category.includes(:exercises).where(user: self)
+  end
+
   private
   def set_defuat_exercises
     cate1 = Category.find_or_create_by(name: '胸')
