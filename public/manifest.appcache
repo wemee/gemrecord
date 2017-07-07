@@ -1,0 +1,11 @@
+CACHE MANIFEST
+# Version 1499410671
+
+CACHE:
+assets/application-a1033e3ab40224f955b6a2f0c60aab93a2a2a5e415bbf04d8325bfae45d6c662.js
+assets/application-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css
+
+NETWORK:
+*
+http://*
+https://*
